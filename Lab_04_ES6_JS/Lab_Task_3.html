@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation - jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { text-align: center; font-family: Arial; margin-top: 40px; }
+
+        input {
+            padding: 8px;
+            margin: 10px;
+            width: 250px;
+        }
+
+        .error { border: 2px solid red; }
+        .success { border: 2px solid green; }
+
+        #message { margin-top: 15px; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h2>Interactive Form Validation</h2>
+
+<form id="myForm">
+    <input type="text" id="name" placeholder="Enter Name"><br>
+    <input type="email" id="email" placeholder="Enter Email"><br>
+    <input type="password" id="password" placeholder="Enter Password"><br>
+    <button type="submit">Submit</button>
+</form>
+
+<div id="message"></div>
+
+<script>
+$(document).ready(function(){
+
+    $("input").blur(function(){
+        if($(this).val().trim() === ""){
+            $(this).addClass("error").removeClass("success");
+        } else {
+            $(this).removeClass("error").addClass("success");
+        }
+    });
+
+    $("#myForm").submit(function(e){
+        e.preventDefault();
+
+        let isValid = true;
+
+        $("input").each(function(){
+            if($(this).val().trim() === ""){
+                $(this).addClass("error");
+                isValid = false;
+            }
+        });
+
+        if(isValid){
+            $("#message")
+                .text("Form submitted successfully!")
+                .css("color", "green")
+                .hide()
+                .fadeIn(500);
+        } else {
+            $("#message")
+                .text("Please fill all fields!")
+                .css("color", "red");
+        }
+    });
+
+});
+</script>
+
+</body>
+</html>

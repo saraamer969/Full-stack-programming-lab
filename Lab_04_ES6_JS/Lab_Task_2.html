@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery Animated Gallery</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <style>
+        body {
+            background-color: #f4f4f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .gallery-container {
+            width: 600px;
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            text-align: center;
+        }
+
+       
+        .image-stack {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #eee;
+        }
+
+        .image-stack img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .image-stack img.active {
+            display: block; 
+        }
+
+        .caption-box {
+            background: #222;
+            color: #fff;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 0 0 8px 8px;
+            min-height: 20px;
+        }
+
+        #caption {
+            margin: 0;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        .controls {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body>
+
+<div class="gallery-container">
+    <h2>Project Portfolio</h2>
+    
+    <div class="image-stack">
+        <img src="https://picsum.photos/id/10/600/400" alt="Serene Mountain Landscape" class="active">
+        <img src="https://picsum.photos/id/26/600/400" alt="The Path Through the Woods">
+        <img src="https://picsum.photos/id/43/600/400" alt="Stormy Ocean Horizons">
+        <img src="https://picsum.photos/id/54/600/400" alt="Early Morning Dew on Leaves">
+    </div>
+    
+    <div class="caption-box">
+        <p id="caption">Serene Mountain Landscape</p>
+    </div>
+
+    <div class="controls">
+        <button id="prev">« Previous</button>
+        <button id="next">Next »</button>
+    </div>
+</div>
+
+<script>
+$(document).ready(function() {
+    
+    function moveGallery(direction) {
+       
+        let currentImg = $('.image-stack img.active');
+        let nextImg;
+
+        if (direction === 'next') {
+            nextImg = currentImg.next('img').length ? currentImg.next('img') : $('.image-stack img').first();
+        } else {
+            nextImg = currentImg.prev('img').length ? currentImg.prev('img') : $('.image-stack img').last();
+        }
+
+   
+        currentImg.fadeOut(600).removeClass('active');
+        
+        nextImg.fadeIn(600, function() {
+        
+            let newCaption = $(this).attr('alt');
+            $('#caption').hide().text(newCaption).fadeIn(200);
+        }).addClass('active');
+    }
+
+    $('#next').on('click', function() {
+        moveGallery('next');
+    });
+
+    $('#prev').on('click', function() {
+        moveGallery('prev');
+    });
+});
+</script>
+
+</body>
+</html>
