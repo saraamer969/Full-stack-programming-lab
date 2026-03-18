@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HotSpring - My Account</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div id="site-header"></div>
+<div style="background: linear-gradient(180deg, #c8d8e8 0%, #e8ecef 30%);">
+<div class="container">
+  <div class="breadcrumb"><a href="index.html">Home</a> <span>›</span> <a href="#">User Account</a> <span>›</span> My Account</div>
+  <div class="content-wrap">
+    <h1 style="font-size:20px;font-weight:bold;margin-bottom:16px">User Profile Details</h1>
+
+    <div class="account-section">
+      <h3>User profile</h3>
+      <p>Hellow User name! From your account you can view your recent orders, manage your shipping and billing addresss.</p>
+      <p><a href="edit-profile.html">edit your password and account details.</a></p>
+    </div>
+
+    <div class="account-section">
+      <h3>Recent Orders</h3>
+      <table class="orders-table">
+        <thead>
+          <tr>
+            <th>Order</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Total</th>
+            <th>Options</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="order-details.html">#303</a></td>
+            <td>December 18, 2014</td>
+            <td>On hold</td>
+            <td>$ 699.00</td>
+            <td><button class="view-btn" onclick="location.href='order-details.html'">VIEW ORDERS</button></td>
+          </tr>
+          <tr>
+            <td><a href="order-details.html">#307</a></td>
+            <td>December 18, 2014</td>
+            <td>On hold</td>
+            <td>$ 799.00</td>
+            <td><button class="view-btn" onclick="location.href='order-details.html'">VIEW ORDERS</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="account-section">
+      <h3>My Addresses</h3>
+      <p style="font-size:12px;color:#666">The following addressess will be used on the checkout page by default</p>
+      <div class="address-grid">
+        <div class="address-card">
+          <h4>Billing address</h4>
+          <p>Farrukh Javaid<br>Hottub Spas<br>Plot 10 Tech Society<br>California, CA 20112<br>United State</p>
+          <button class="edit-addr-btn" onclick="location.href='billing-address.html'">EDIT ADRESSES</button>
+        </div>
+        <div class="address-card">
+          <h4>Billing address</h4>
+          <p>Farrukh Javaid<br>Hottub Spas<br>Plot 10 Tech Society<br>California, CA 20112<br>United State</p>
+          <button class="edit-addr-btn" onclick="location.href='shipping-address.html'">EDIT ADRESSES</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div></div>
+<div id="site-footer"></div>
+<script src="js/layout.js"></script>
+</body>
+</html>
